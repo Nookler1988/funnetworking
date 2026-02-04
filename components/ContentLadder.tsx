@@ -123,7 +123,7 @@ export const ContentLadder: React.FC = () => {
               </button>
             </form>
             
-            <div className="absolute bottom-16 right-6 text-[10px] font-black text-white opacity-30 uppercase tracking-widest">
+            <div className="absolute bottom-20 right-6 text-[10px] font-black text-white opacity-30 uppercase tracking-widest">
               Контент маркетинг против скуки
             </div>
           </div>
