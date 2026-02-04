@@ -86,7 +86,7 @@ function App() {
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* Stats Section - Возвращаем детализированные статы */}
       <section className="py-12 px-6 bg-black border-y border-white/10">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
@@ -119,7 +119,7 @@ function App() {
         </div>
       </section>
 
-      {/* Philosophy Section */}
+      {/* Philosophy Section - Возвращаем "Хватит кормить алгоритмы" */}
       <section id="philosophy" className="py-32 bg-white text-black relative overflow-hidden scroll-mt-24">
         <div className="max-w-5xl mx-auto px-6">
           <h2 className="text-5xl md:text-8xl font-black mb-16 tracking-tighter uppercase leading-[0.9]">
@@ -135,14 +135,14 @@ function App() {
             <div className="p-10 bg-black text-white rounded-[40px] hover:scale-[1.02] transition-transform">
               <h3 className="text-3xl font-black mb-6 uppercase leading-none">2. Стратегия Лестницы</h3>
               <p className="text-xl font-bold leading-tight opacity-80">
-                Мы не просто постим. Мы двигаем людей. От Внимания (Reels) -> к Доверию (Статьи) -> к Продажам (Telegram).
+                Мы не просто постим. Мы двигаем людей. От Внимания (Reels) → к Доверию (Статьи) → к Продажам (Telegram).
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* The System */}
+      {/* The System - Возвращаем полную детализацию 6 уровней */}
       <section id="system" className="py-32 px-6 bg-black scroll-mt-24">
         <div className="max-w-7xl mx-auto">
           <div className="mb-24 text-center">
@@ -154,41 +154,29 @@ function App() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { title: "Зацеп", sub: "Крючок", desc: "Картинка + триггерный заголовок. Захват внимания через визуальные смыслы.", color: "#7501FF" },
+              { title: "Зацеп", sub: "Крючок", desc: "Картинка + триггерный заголовок. Захват внимания через визуальные смысals.", color: "#7501FF" },
               { title: "Сетка, Тенчат", sub: "Костюм", desc: "Деловой нетворкинг и профессиональное признание в профильных сетях.", color: "#FFFFFF" },
               { title: "Тредс", sub: "Шум", desc: "Быстрые мысли и диалоги для вирального роста и вовлечения.", color: "#FFFFFF" },
               { title: "Лонгриды", sub: "Мозг", desc: "Статьи на Дзен, VC, Т-Ж. Глубокий контент, формирующий фундамент доверия.", color: "#FFFFFF" },
               { title: "1 пост — 5 форматов", sub: "Вирус", desc: "Трансформация контента через ИИ для охвата всех площадок за 30 минут.", color: "#FFFFFF" },
               { title: "Telegram", sub: "Грааль", desc: "Конечная точка. Место, где тебя действительно слушают и покупают.", color: "#000000", border: true },
-            ].map((item, idx) => {
-              const isDarkBackground = item.color === '#000000' || item.color === '#7501FF';
-              const textColorClass = isDarkBackground ? 'text-white' : 'text-black';
-              const borderClass = item.color === '#000000' ? 'border-4 border-white' : '';
-
-              return (
-                <div 
-                  key={idx} 
-                  className={`
-                    rounded-[40px] p-10 flex flex-col justify-between h-[420px] transition-all hover:-translate-y-2 group
-                    ${textColorClass} ${borderClass}
-                  `}
-                  style={{ backgroundColor: item.color }}
-                >
-                  <div>
-                    <div className={`text-[10px] font-black uppercase tracking-[0.3em] mb-4 opacity-40 ${textColorClass}`}>
-                      {item.sub}
-                    </div>
-                    <h3 className="text-3xl font-black mb-4 uppercase leading-none">{item.title}</h3>
-                    <p className={`text-lg font-bold leading-tight opacity-70 group-hover:opacity-100 transition-opacity ${textColorClass}`}>
-                      {item.desc}
-                    </p>
-                  </div>
-                  <div className={`font-black text-sm uppercase opacity-30 ${textColorClass}`}>
-                    Элемент {idx + 1}/6
-                  </div>
+            ].map((item, idx) => (
+              <div 
+                key={idx} 
+                className={`
+                  rounded-[40px] p-10 flex flex-col justify-between h-[420px] transition-all hover:-translate-y-2 group
+                  ${item.color === '#000000' ? 'text-white border-4 border-white' : 'text-black'}
+                `}
+                style={{ backgroundColor: item.color }}
+              >
+                <div>
+                  <div className={`text-[10px] font-black uppercase tracking-[0.3em] mb-4 opacity-40 ${item.color === '#000000' ? 'text-white' : 'text-black'}`}>{item.sub}</div>
+                  <h3 className="text-3xl font-black mb-4 uppercase leading-none">{item.title}</h3>
+                  <p className="text-lg font-bold leading-tight opacity-70 group-hover:opacity-100 transition-opacity">{item.desc}</p>
                 </div>
-              );
-            })}
+                <div className="font-black text-sm uppercase opacity-30">Элемент {idx + 1}/6</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

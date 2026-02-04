@@ -1,54 +1,61 @@
-import { GoogleGenAI, Type } from "@google/genai";
 import { ContentStrategy } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const templates = [
+  {
+    platform: "Reels/Shorts",
+    templates: [
+      { title: "Хук, который ломает ленту", description: "15-секундный вирус с контр-интуитивным тейком. Никаких советов — только провокация." },
+      { title: "Визуальный взрыв", description: "Быстрые кадры + текст на экране. Показываешь результат за 3 секунды, объясняешь как — в комментах." },
+      { title: "Миф под удар", description: "Ломаешь популярное заблуждение в нише за 30 секунд. Люди бегут спорить — а это охваты." },
+    ]
+  },
+  {
+    platform: "Telegram/VC.ru",
+    templates: [
+      { title: "Глубокий разбор без воды", description: "2-3 абзаца конкретики. Один кейс, цифры, вывод. Тот, кто дочитал — уже тёплый лид." },
+      { title: "История провала", description: "Честно про ошибку, которую допустил. Вызывает больше доверия, чем посты об успехе." },
+      { title: "Чек-лист за внимание", description: "Полезный мини-гайд. В конце: полная версия в Telegram-канале." },
+    ]
+  },
+  {
+    platform: "Telegram-канал",
+    templates: [
+      { title: "Лид-магнит эксклюзив", description: "PDF, таблица или бот, который решает проблему. Доступен только подписчикам." },
+      { title: "Закрытая воронка", description: "Пошаговая воронка в одном сообщении. Читаешь — применяешь — получаешь результат." },
+      { title: "Персональный аудит", description: "Бесплатный разбор для 3-5 подписчиков. Собираешь заявки — делаешь контент из разборов." },
+    ]
+  }
+];
+
+const generateMockStrategy = (topic: string): ContentStrategy => {
+  const getRandomTemplate = (platformIdx: number) => {
+    const platformTemplates = templates[platformIdx].templates;
+    return platformTemplates[Math.floor(Math.random() * platformTemplates.length)];
+  };
+
+  return {
+    niche: topic,
+    steps: [
+      {
+        ...getRandomTemplate(0),
+        platform: templates[0].platform,
+      },
+      {
+        ...getRandomTemplate(1),
+        platform: templates[1].platform,
+      },
+      {
+        ...getRandomTemplate(2),
+        platform: templates[2].platform,
+      },
+    ],
+  };
+};
 
 export const generateGrowthStrategy = async (topic: string): Promise<ContentStrategy | null> => {
   if (!topic) return null;
 
-  try {
-    const response = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
-      contents: `Создай 3-шаговую воронку контент-маркетинга для ниши: "${topic}".
-      Цель - перевести пользователя из соцсетей (холодный трафик) в подписчики Telegram-канала.
-      
-      Шаг 1: Вирусный хук для широкого охвата (Reels/Shorts/TikTok).
-      Шаг 2: Экспертный пост для прогрева (Telegram/LinkedIn/vc.ru).
-      Шаг 3: Эксклюзивная ценность (Лид-магнит) внутри Telegram-канала.
-      
-      Стиль: дерзкий, конкретный, без воды. Используй "ты", будь краток.
-      Язык ответа: Русский.`,
-      config: {
-        responseMimeType: "application/json",
-        responseSchema: {
-          type: Type.OBJECT,
-          properties: {
-            niche: { type: Type.STRING },
-            steps: {
-              type: Type.ARRAY,
-              items: {
-                type: Type.OBJECT,
-                properties: {
-                  platform: { type: Type.STRING },
-                  title: { type: Type.STRING },
-                  description: { type: Type.STRING },
-                },
-                required: ["platform", "title", "description"],
-              },
-            },
-          },
-          required: ["niche", "steps"],
-        },
-      },
-    });
+  await new Promise((resolve) => setTimeout(resolve, 1500));
 
-    const text = response.text;
-    if (text) {
-      return JSON.parse(text) as ContentStrategy;
-    }
-    return null;
-  } catch (error) {
-    console.error("Error generating strategy:", error);
-    throw error;
-  }
+  return generateMockStrategy(topic);
 };
