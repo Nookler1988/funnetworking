@@ -1,7 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import { generateGrowthStrategy } from '../services/geminiService';
 import { ContentStrategy } from '../types';
 import { Loader2, Trash2, CheckCircle2 } from 'lucide-react';
+
+// Demo strategy generator without API
+const generateDemoStrategy = (topic: string): ContentStrategy => {
+  const strategies: Record<string, ContentStrategy> = {
+    default: {
+      niche: topic,
+      steps: [
+        {
+          platform: "Reels / Shorts",
+          title: "Вирусный хук",
+          description: `Создай 15-секундное видео с провокационным вопросом о ${topic}. Используй трендовый звук и быстрые смены кадров.`
+        },
+        {
+          platform: "Telegram / VC.ru",
+          title: "Глубокий разбор",
+          description: `Напиши статью с кейсом: "Как я заработал первые $1000 в нише ${topic}". Добавь конкретные цифры и скриншоты.`
+        },
+        {
+          platform: "Telegram-канал",
+          title: "Лид-магнит",
+          description: `Создай чек-лист "Топ-10 ошибок в ${topic}, которые стоят тебе денег". Доступ по подписке.`
+        }
+      ]
+    }
+  };
+  
+  return strategies.default;
+};
 
 export const ContentLadder: React.FC = () => {
   const [topic, setTopic] = useState('');
@@ -46,14 +73,12 @@ export const ContentLadder: React.FC = () => {
     setError('');
     setStrategy(null);
 
-    try {
-      const result = await generateGrowthStrategy(topic);
+    // Simulate API delay
+    setTimeout(() => {
+      const result = generateDemoStrategy(topic);
       setStrategy(result);
-    } catch (err) {
-      setError('Связь потеряна. Перетасовываем колоду...');
-    } finally {
       setLoading(false);
-    }
+    }, 1500);
   };
 
   const handleClear = () => {
