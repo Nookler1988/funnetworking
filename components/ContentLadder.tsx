@@ -111,7 +111,7 @@ export const ContentLadder: React.FC = () => {
                 type="text"
                 value={topic}
                 onChange={(e) => setTopic(e.target.value)}
-                placeholder="Например: Крипта, Таро..."
+                placeholder="Крипта, Таро..."
                 className="w-full bg-white text-black text-lg md:text-xl font-black p-3 md:p-4 rounded-xl mb-4 outline-none focus:ring-4 focus:ring-white/20 placeholder:text-gray-400 transition-all"
               />
               <button
