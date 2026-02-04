@@ -188,9 +188,9 @@ export const ContentLadder: React.FC = () => {
                 <div className="bg-black border-2 border-white rounded-3xl p-8 flex flex-col justify-center items-center text-center aspect-[2.5/3.5] transform rotate-2 shadow-2xl">
                    <h3 className="text-2xl md:text-3xl font-black text-white mb-4 uppercase">Ты выиграл.</h3>
                    <p className="text-white text-sm font-bold mb-8 opacity-80 uppercase tracking-tight">Это только демо-версия. Готов забрать полную стратегию?</p>
-                   <a href="#contact" className="bg-white text-black px-8 py-3 rounded-full font-black uppercase text-sm hover:scale-105 transition-transform">
-                     Начать Игру
-                   </a>
+<a href="#contact" className="bg-white text-black px-8 py-3 rounded-full font-black uppercase text-sm hover:scale-105 transition-transform">
+                      Начать Игру
+                    </a>
                 </div>
               </div>
             </div>

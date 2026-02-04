@@ -53,7 +53,7 @@ export const Navigation: React.FC = () => {
             </a>
           ))}
           <a 
-            href="https://t.me/funnetworking" 
+            href="https://t.me/artemselifanov" 
             target="_blank" 
             rel="noopener noreferrer"
             className="bg-white text-black px-6 py-3 rounded-full font-black hover:scale-105 transition-transform flex items-center gap-2"
@@ -87,7 +87,7 @@ export const Navigation: React.FC = () => {
             </a>
           ))}
           <a 
-            href="https://t.me/funnetworking" 
+            href="https://t.me/artemselifanov" 
             target="_blank" 
             rel="noopener noreferrer"
             className="mt-auto bg-white text-black px-6 py-4 rounded-full font-black text-center text-xl uppercase tracking-wider flex items-center justify-center gap-3"

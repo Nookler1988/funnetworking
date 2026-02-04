@@ -205,7 +205,7 @@ function App() {
             <h2 className="text-6xl md:text-9xl font-black text-white tracking-tighter leading-none uppercase mb-8">
               Твой ход.
             </h2>
-            <a href="https://t.me/funnetworking" target="_blank" className="inline-flex items-center gap-4 bg-white text-black px-12 py-6 rounded-full font-black text-2xl uppercase hover:scale-105 transition-transform shadow-[0_0_40px_rgba(255,255,255,0.1)]">
+            <a href="https://t.me/artemselifanov" target="_blank" className="inline-flex items-center gap-4 bg-white text-black px-12 py-6 rounded-full font-black text-2xl uppercase hover:scale-105 transition-transform shadow-[0_0_40px_rgba(255,255,255,0.1)]">
               <Send size={24} fill="currentColor" />
               Написать
             </a>
