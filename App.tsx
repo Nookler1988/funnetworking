@@ -135,7 +135,7 @@ function App() {
             <div className="p-10 bg-black text-white rounded-[40px] hover:scale-[1.02] transition-transform">
               <h3 className="text-3xl font-black mb-6 uppercase leading-none">2. Стратегия Лестницы</h3>
               <p className="text-xl font-bold leading-tight opacity-80">
-                Мы не просто постим. Мы двигаем людей. От Внимания (Reels) -> к Доверию (Статьи) -> к Продажам (Telegram).
+                Мы не просто постим. Мы двигаем людей. От Внимания (Reels) {'->'} к Доверию (Статьи) {'->'} к Продажам (Telegram).
               </p>
             </div>
           </div>
